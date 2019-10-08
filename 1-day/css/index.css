@@ -1,0 +1,35 @@
+*
+{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Lobster', cursive;
+}
+
+#main
+{
+    width: 700px;
+    height: 700px;
+
+    background-image: url("../media/timon-pumbaa-wall-9.jpg");
+    background-size: 100% 100%;
+
+    margin: 0px auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#main h1
+{
+    color: red;
+    text-align: center;
+}
+
+#player_name
+{
+    margin-top: 10px;
+    height: 50px;
+    font-size: 20px;
+}
