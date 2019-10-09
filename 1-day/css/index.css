@@ -25,6 +25,15 @@
 {
     color: red;
     text-align: center;
+    margin-bottom: 150px;
+}
+
+#instruction
+{
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 5px;
+    background-color: white;
 }
 
 #player_name
