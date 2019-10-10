@@ -1,0 +1,1 @@
+let pumbaa = new Player('player', 'pumbaa', 200, 100, 60, 60);

@@ -4,14 +4,22 @@ class Player
     {
         this.element = document.querySelector('#' + id);
 
-        this.element.left = left;
-        this.element.bottom = bottom;
-        this.element.width = width;
-        this.element.height = height;
+        this.left = left;
+        this.bottom = bottom;
+        this.width = width;
+        this.height = height;
 
         this.chracter = chracter;
+
+        if (this.chracter = 'pumbaa')
+        {
+            this.element.style.backgroundImage = 'url("./media/pumbaa/lion_king_PNG49.png")';
+            this.element.style.backgroundSize = '100% 100%';
+            this.element.style.position = 'absolute';
+        }
     }
 
+    // getters and setters
     get width()
     {
         return parseInt(this.element.style.width);
@@ -51,4 +59,16 @@ class Player
     {
         this.element.style.bottom = value + 'px';
     }
+
+    // methods
+    moveLeft(speed)
+    {
+
+    }
+
+    moveRight(speed)
+    {
+
+    }
+
 }
