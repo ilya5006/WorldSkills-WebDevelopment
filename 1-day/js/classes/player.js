@@ -49,6 +49,6 @@ class Player
 
     set bottom(value)
     {
-        this.element.style.bottom = bottom + 'px';
+        this.element.style.bottom = value + 'px';
     }
 }
