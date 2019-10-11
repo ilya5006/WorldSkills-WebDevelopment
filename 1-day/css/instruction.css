@@ -3,3 +3,11 @@
     color: red;
     font-size: 40px;
 }
+
+#go_back
+{
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 5px;
+    background-color: white;
+}
