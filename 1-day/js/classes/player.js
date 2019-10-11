@@ -64,36 +64,53 @@ class Player
     // methods
     moveLeft()
     {
+        // Moves player left depending on speed
+        // @return {promise} - call resolve() when player is at the end of the path
         let path = this.left - (this.speed * 10);
         let pathPerMillisecond = this.speed;
 
-        let interval = setInterval(() =>
-        {
-            if (this.left <= path)
-            {
-                this.left = path;
-                clearInterval(interval);
-            }
+        this.element.style.transform = 'scale(-1, 1)';
 
-            this.left -= pathPerMillisecond;
-        }, 10);
+        return new Promise((resolve, reject) =>
+        {
+            let interval = setInterval(() =>
+            {
+                if (this.left <= path)
+                {
+                    this.left = path;
+                    clearInterval(interval);
+                    resolve();
+                }
+    
+                this.left -= pathPerMillisecond;
+            }, 10);
+        })
+        
     }
 
     moveRight()
     {
+        // Moves player right depending on speed
+        // @return {promise} - call resolve() when player is at the end of the path
         let path = this.left + (this.speed * 10);
         let pathPerMillisecond = this.speed;
 
-        let interval = setInterval(() =>
-        {
-            if (this.left >= path)
-            {
-                this.left = path;
-                clearInterval(interval);
-            }
+        this.element.style.transform = 'scale(1, 1)';
 
-            this.left += pathPerMillisecond;
-        }, 10);
+        return new Promise((resolve, reject) =>
+        {
+            let interval = setInterval(() =>
+            {
+                if (this.left >= path)
+                {
+                    this.left = path;
+                    clearInterval(interval);
+                    resolve();
+                }
+    
+                this.left += pathPerMillisecond;
+            }, 10);
+        });
     }
 
 }
