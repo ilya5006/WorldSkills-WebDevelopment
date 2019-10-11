@@ -1,6 +1,6 @@
 class Player
 {
-    constructor(id, chracter, width, height, left, bottom)
+    constructor(id, chracter, width, height, left, bottom, speed)
     {
         this.element = document.querySelector('#' + id);
 
@@ -10,6 +10,7 @@ class Player
         this.height = height;
 
         this.chracter = chracter;
+        this.speed = speed;
 
         if (this.chracter = 'pumbaa')
         {
@@ -61,14 +62,38 @@ class Player
     }
 
     // methods
-    moveLeft(speed)
+    moveLeft()
     {
+        let path = this.left - (this.speed * 10);
+        let pathPerMillisecond = this.speed;
 
+        let interval = setInterval(() =>
+        {
+            if (this.left <= path)
+            {
+                this.left = path;
+                clearInterval(interval);
+            }
+
+            this.left -= pathPerMillisecond;
+        }, 10);
     }
 
-    moveRight(speed)
+    moveRight()
     {
+        let path = this.left + (this.speed * 10);
+        let pathPerMillisecond = this.speed;
 
+        let interval = setInterval(() =>
+        {
+            if (this.left >= path)
+            {
+                this.left = path;
+                clearInterval(interval);
+            }
+
+            this.left += pathPerMillisecond;
+        }, 10);
     }
 
 }
