@@ -165,6 +165,7 @@ class Player
     /**
      * EN
      * Player fall
+     * Private function
      * @return {promise} - call resolve() when player is at the surface
      */
     _fall(thePointOfFall)
