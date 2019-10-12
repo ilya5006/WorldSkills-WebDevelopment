@@ -1,4 +1,4 @@
-let pumbaa = new Player('player', 'pumbaa', 100, 100, 60, 60, 10);
+let pumbaa = new Player('player', 'pumbaa', 100, 100, 60, 60, 10, 50);
 
 let leftAndRightArrowTracking = (event) =>
 {
@@ -16,4 +16,16 @@ let leftAndRightArrowTracking = (event) =>
     }
 }
 
+let topArrowTracking = (event) =>
+{
+    switch (event.key)
+    {
+        case 'ArrowUp':
+            document.removeEventListener('keydown', topArrowTracking);
+            pumbaa.jump().then(() => document.addEventListener('keydown', topArrowTracking));
+            break;
+    }
+}
+
 document.addEventListener('keydown', leftAndRightArrowTracking);
+document.addEventListener('keydown', topArrowTracking);

@@ -1,7 +1,20 @@
 class Player
 {
-    constructor(id, chracter, width, height, left, bottom, speed)
+    constructor(id, chracter, width, height, left, bottom, speed, jumpForce)
     {
+        /**
+         * RU
+         * Конструктор, который создаёт персонажа
+         * @constructor
+         * @param {string} id - Id div'а персонажа в HTML
+         * @param {string} chracter - Создаваемый персонаж (Тимон или Пумба)
+         * @param {number} width - Ширина персонажа
+         * @param {number} height - Высота персонажа
+         * @param {number} left - Значение left у персонажа (left - css-свойство)
+         * @param {number} bottom - Значение bottom у персонажа (bottom - css-свойство)
+         * @param {number} speed - Скорость, с которой будет передвигаться персонаж
+         * @param {number} jumpForce - Сила, которую будет прилагать персонаж для прыжка
+         */
         this.element = document.querySelector('#' + id);
 
         this.left = left;
@@ -11,6 +24,7 @@ class Player
 
         this.chracter = chracter;
         this.speed = speed;
+        this.jumpForce = jumpForce;
 
         if (this.chracter = 'pumbaa')
         {
@@ -64,8 +78,11 @@ class Player
     // methods
     moveLeft()
     {
-        // Moves player left depending on speed
-        // @return {promise} - call resolve() when player is at the end of the path
+        /**
+         * EN
+         * Moves player left depending on speed
+         * @return {promise} - call resolve() when player is at the end of the path
+         */
         let path = this.left - (this.speed * 10);
         let pathPerMillisecond = this.speed;
 
@@ -84,14 +101,17 @@ class Player
     
                 this.left -= pathPerMillisecond;
             }, 10);
-        })
-        
+        });
     }
 
     moveRight()
     {
-        // Moves player right depending on speed
-        // @return {promise} - call resolve() when player is at the end of the path
+        /**
+         * EN
+         * Moves player right depending on speed
+         * @return {promise} - call resolve() when player is at the end of the path
+         */
+
         let path = this.left + (this.speed * 10);
         let pathPerMillisecond = this.speed;
 
@@ -113,4 +133,53 @@ class Player
         });
     }
 
+    jump()
+    {
+        /**
+         * EN
+         * Player jump
+         * @return {promise} - call resolve() when player is at the surface
+         */
+        let thePointOfFall = this.bottom;
+        let path = this.bottom + this.jumpForce;
+        let pathPerMillisecond = path / 10;
+
+        return new Promise((resolve, reject) =>
+        {
+            let interval = setInterval(() =>
+            {
+                if (this.bottom >= path)
+                {
+                    clearInterval(interval);
+                    this._fall(thePointOfFall).then(() => { this.bottom = thePointOfFall; resolve(); });
+                }
+
+                this.bottom += pathPerMillisecond;
+            }, 10);
+        });
+    }
+
+    _fall(thePointOfFall)
+    {
+        /**
+         * EN
+         * Player fall
+         * @return {promise} - call resolve() when player is at the surface
+         */
+        let gravitation = 1.8;
+        return new Promise((resolve, reject) =>
+        {
+            let interval = setInterval(() =>
+            {
+                if (this.bottom <= thePointOfFall)
+                {
+                    this.bottom = thePointOfFall;
+                    clearInterval(interval);
+                    resolve();
+                }
+
+                this.bottom -= gravitation++;
+            }, 10);
+        });
+    }
 }
