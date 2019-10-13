@@ -1,4 +1,4 @@
-let pumbaa = new Player('player', 'pumbaa', 100, 100, 60, 60, 10, 150);
+let pumbaa = new Player('player', 'timon', 100, 100, 60, 60, 10, 150);
 
 let leftAndRightArrowTracking = (event) =>
 {

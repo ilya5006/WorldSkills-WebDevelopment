@@ -15,7 +15,6 @@ class Player
      */
     constructor(id, chracter, width, height, left, bottom, speed, jumpForce)
     {
-        
         this.element = document.querySelector('#' + id);
 
         this.left = left;
@@ -30,9 +29,15 @@ class Player
         if (this.chracter = 'pumbaa')
         {
             this.element.style.backgroundImage = 'url("./media/pumbaa/lion_king_PNG49.png")';
-            this.element.style.backgroundSize = '100% 100%';
-            this.element.style.position = 'absolute';
         }
+
+        if (this.chracter = 'timon')
+        {
+            this.element.style.backgroundImage = 'url("./media/timon/Lucky_Shoot_1452244953.png")';
+        }
+        
+        this.element.style.backgroundSize = '100% 100%';
+        this.element.style.position = 'absolute';
     }
 
     // getters and setters
